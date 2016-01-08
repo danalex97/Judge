@@ -11,7 +11,8 @@ urlpatterns = patterns('',
     
     url(r'^home/$', display_home),
     url(r'^$', display_home),
-    url(r'.+', no_page),
     
     url(r'^admin/', include(admin.site.urls)),
+    
+    url(r'.+', no_page),
 )

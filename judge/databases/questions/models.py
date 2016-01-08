@@ -8,3 +8,5 @@ class Question(models.Model):
 	content = models.CharField(max_length=1000)
 	def __str__(self):
 		return '%s %s' % (self.user, self.title)
+	class Admin:
+		pass
