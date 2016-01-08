@@ -16,7 +16,3 @@ def hours_ahead(request, offset):
 	t = get_template('datetime.html') 
 	html = t.render(Context({'datetime': now, 'plus': offset}))
 	return HttpResponse(html)
-
-def no_page(req):
-	html = "<html><body>No page<body><html>"
-	return HttpResponse(html)
