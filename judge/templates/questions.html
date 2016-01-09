@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Questions{% if query %},searched for {{ query|escape }} {% endif %}</title>
+	</head>
+	
+	{% include 'header.html' %}
+
+	<body>
+		<form action="." method="GET">
+			<label for="q">Search: </label>
+			<input type="text" name="q" value="{{ query|escape }}">
+			<input type="submit" value="Search">
+		</form>
+		{% if query %}
+			<h2>Results for "{{ query|escape }}":</h2>
+			{% if results %}
+				<ul>
+					{% for x in results %}
+						<li>{{ x|escape }}</li>
+					{% endfor %}
+				</ul>
+			{% else %}
+				<p>No questions found.</p>
+			{% endif %}
+		{% else %}
+			<h2>All the articles</h2>
+			<ul>
+				{% for x in results %}
+					<li>{{ x.content|safe|escape }}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+</body>
+</html>
+	
+	{% include 'footer.html' %}
+<html>
