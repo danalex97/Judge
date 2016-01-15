@@ -1,12 +1,21 @@
-<!DOCTYPE html>
-<html>
-	<body>
-		<nav>
-			<a href="/home/">Home</a> 
-			<a href="/tasks/">Tasks</a> 
-			<a href="/questions/">Questions</a> 
-			<a href="/articles/">Articles</a>
-			{% include 'datetime.html' %}
-		</nav>
-	<body>
-<html>
+<!--header-->
+
+<div class = "row">
+	<div class="col-sm-2">
+		<a href="/home/">Home</a>
+	</div> 
+	<div class="col-sm-2">
+		<a href="/tasks/">Tasks</a> 
+	</div>
+	<div class="col-sm-3">
+		<a href="/questions/">Questions</a> 
+	</div>
+	<div class="col-sm-3">
+		<a href="/articles/">Articles</a>
+	</div>
+	<div class="col-sm-2">
+		{% include 'datetime.html' %}
+	</div>
+</div>
+
+<!--/header-->

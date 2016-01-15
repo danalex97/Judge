@@ -20,4 +20,4 @@ urlpatterns = patterns('',
     url(r'^questions/$', display_questions),
     
     url(r'.+', no_page),
-)
+) 
