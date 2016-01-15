@@ -9,7 +9,7 @@ from django.http import HttpResponse
 
 def display_home(request):
 	t = get_template('basic.html')
-	html = t.render(Context({}))
+	html = t.render(Context({ 'path':'home' }))
 	return HttpResponse(html)
 
 def no_page(req):
@@ -32,9 +32,11 @@ def display_questions(request):
 	if all_results:
 		return render_to_response('questions.html', {
 			"results": all_results,
+			"path": "questions"
 		})
 	else:
 		return render_to_response('questions.html', {
 			"results": results,
-			"query": query
+			"query": query, 
+			"path": "questions"
 		})

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 	
-	
 	<head>
 		<title>Questions{% if query %},searched for {{ query|escape }} {% endif %}</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -11,34 +10,32 @@
 	{% include 'header.html' %}
 
 	<body>
-		<form action="." method="GET">
-			<label for="q">Search: </label>
-			<input type="text" name="q" value="{{ query|escape }}">
-			<input type="submit" value="Search">
-		</form>
+		
 		{% if query %}
 		
 			<h2>Results for "{{ query|escape }}":</h2>
 		
 		{% else %}
 		
-			<h2>All the articles</h2>
+			<h2>&nbsp;All the questions</h2>
 		
 		{% endif %}
+		
+		<hr>
 		
 		{% if results %}
 			
 			<div>
 				<div>
-					<div class>
+					<div>
 						<div class="col-sm-4">
-							Title
+							<h3 class="well" align="center">Title</h3>
 						</div>
-						<div class="col-sm-4">
-							Author
+						<div class="col-sm-4" align="center">
+							<h3 class="well">Author</h3>
 						</div>
-						<div class="col-sm-4">
-							Question
+						<div class="col-sm-4" align="center">
+							<h3 class="well">Question</h3>
 						</div>
 					</div>
 				</div>
@@ -47,26 +44,33 @@
 					
 					{% for x in results %}
 						<div>
-							<div class="col-sm-4">{{ x.title|escape }}</div>
-							<div class="col-sm-4">{{ x.user|escape }}</div>
-							<div class="col-sm-4">
-								<a data-toggle="collapse" href="#rowId{{forloop.counter0}}">Content</a>
+							<div class="col-sm-4" align="center">
+								<div class="alert alert-dismissible alert-success">{{ x.title|escape }} </div>
+							</div>
+							<div class="col-sm-4" align="center">
+								<div class="alert alert-dismissible alert-danger">{{ x.user|escape }}</div>
+							</div>
+							<div class="col-sm-4" align="center">
+								<div class="alert alert-dismissible alert-success">
+									<a data-toggle="collapse" href="#rowId{{forloop.counter0}}">Content</a>
+								</div>
 							</div>
 						</div>
 						
 						<div class="collapse" id="rowId{{forloop.counter0}}">
-							{{ x.content|safe|escape }}
+								<h2> {{x.title|escape }} | {{ x.user|escape }} </h2>
+								<div class="jumbotron"> {{ x.content|safe|escape }} </div>
 						</div>
 					{% endfor %}
 				</div>
 				
 			</div>
 		
+		
 		{% else %}
 			<p>No questions found.</p>
 		{% endif %}
-</body>
-</html>
-	
+		
 	{% include 'footer.html' %}
-<html>
+	</body>
+</html>
