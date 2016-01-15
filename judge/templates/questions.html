@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
+	
+	
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Questions{% if query %},searched for {{ query|escape }} {% endif %}</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	</head>
-
+	
 	{% include 'header.html' %}
 
 	<body>
@@ -14,23 +17,53 @@
 			<input type="submit" value="Search">
 		</form>
 		{% if query %}
+		
 			<h2>Results for "{{ query|escape }}":</h2>
-			{% if results %}
-				<ul>
-					{% for x in results %}
-						<li>{{ x|escape }}</li>
-					{% endfor %}
-				</ul>
-			{% else %}
-				<p>No questions found.</p>
-			{% endif %}
+		
 		{% else %}
+		
 			<h2>All the articles</h2>
-			<ul>
-				{% for x in results %}
-					<li>{{ x.content|safe|escape }}</li>
-				{% endfor %}
-			</ul>
+		
+		{% endif %}
+		
+		{% if results %}
+			
+			<div>
+				<div>
+					<div class>
+						<div class="col-sm-4">
+							Title
+						</div>
+						<div class="col-sm-4">
+							Author
+						</div>
+						<div class="col-sm-4">
+							Question
+						</div>
+					</div>
+				</div>
+				
+				<div>
+					
+					{% for x in results %}
+						<div>
+							<div class="col-sm-4">{{ x.title|escape }}</div>
+							<div class="col-sm-4">{{ x.user|escape }}</div>
+							<div class="col-sm-4">
+								<a data-toggle="collapse" href="#rowId{{forloop.counter0}}">Content</a>
+							</div>
+						</div>
+						
+						<div class="collapse" id="rowId{{forloop.counter0}}">
+							{{ x.content|safe|escape }}
+						</div>
+					{% endfor %}
+				</div>
+				
+			</div>
+		
+		{% else %}
+			<p>No questions found.</p>
 		{% endif %}
 </body>
 </html>
