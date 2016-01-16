@@ -16,6 +16,9 @@ def no_page(req):
 	html = "<html><body>No page<body><html>"
 	return HttpResponse(html)
 
+def render_qset(query):
+	pass
+
 def display_questions(request):
 	query = request.GET.get('q', '')
 	all_results = 0
@@ -40,3 +43,12 @@ def display_questions(request):
 			"query": query, 
 			"path": "questions"
 		})
+
+def display_tasks(request):
+	pass
+
+def display_hacks(request):
+	pass
+
+def display_articles(request):
+	pass
