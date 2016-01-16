@@ -8,7 +8,7 @@ class Question(models.Model):
 	title     = models.CharField(max_length=100)
 	statement = models.CharField(max_length=3000)
 	answer    = models.CharField(max_length=3000)
-	labes     = models.CharField(max_length=500)
+	labels     = models.CharField(max_length=500)
 	def __str__(self):
 		return '%s %s' % (self.user, self.title)
 	class Admin:
@@ -20,7 +20,7 @@ class Hack(models.Model):
 	statement = models.CharField(max_length=3000)
 	resources = models.CharField(max_length=1000)
 	techs     = models.CharField(max_length=1000)
-	labes     = models.CharField(max_length=500)
+	labels     = models.CharField(max_length=500)
 	def __str__(self):
 		return '%s %s' % (self.user, self.title)
 	class Admin:

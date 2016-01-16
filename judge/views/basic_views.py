@@ -4,6 +4,8 @@ from django.template import Context
 from django.db.models import Q
 from django.shortcuts import render_to_response
 from judge.database.models import Question
+from judge.database.models import Hack
+from judge.database.models import Article
 
 from django.http import HttpResponse
 
@@ -17,38 +19,49 @@ def no_page(req):
 	return HttpResponse(html)
 
 def render_qset(query):
-	pass
-
-def display_questions(request):
-	query = request.GET.get('q', '')
-	all_results = 0
 	if query:
 		qset = (
 			Q(user__icontains=query) |
 			Q(title__icontains=query) |
-			Q(content__icontains=query)
+			Q(labels__icontains=query)
 		)
-		results = Question.objects.filter(qset).distinct()
+	return qset
+
+def render_my_response(my_file, res, aRes, qry, my_path):
+	if aRes:
+		return render_to_response(my_file, {
+			"results": aRes,
+			"path": my_path})
+	else:
+		return render_to_response(my_file, {
+			"results":res,
+			"query": qry,
+			"path": my_path})
+
+def display_by_class(request, input_class, template, name):
+	query = request.GET.get('q', '')
+	all_results = 0
+	results = 0
+	if query:
+		qset = render_qset(query)
+		results = input_class.objects.filter(qset).distinct()
 	else:
 		results = []
-		all_results = Question.objects.distinct()
-	if all_results:
-		return render_to_response('questions.html', {
-			"results": all_results,
-			"path": "questions"
-		})
-	else:
-		return render_to_response('questions.html', {
-			"results": results,
-			"query": query, 
-			"path": "questions"
-		})
+		all_results = input_class.objects.distinct()
+	return render_my_response(template
+		, results
+		, all_results
+		, query
+		, name)
+
+def display_questions(request):
+	return display_by_class(request, Question, 'questions.html', 'questions')
 
 def display_tasks(request):
 	pass
 
 def display_hacks(request):
-	pass
+	return display_by_class(request, Hack, 'hacks.html', 'hack')
 
 def display_articles(request):
-	pass
+	return display_by_class(request, Article, 'articles.html', 'articles')
