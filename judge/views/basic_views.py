@@ -14,6 +14,11 @@ def display_home(request):
 	html = t.render(Context({ 'path':'home' }))
 	return HttpResponse(html)
 
+def display_freshers(request):
+	t = get_template('freshers.html')
+	html = t.render(Context({ 'path':'freshers' }))
+	return HttpResponse(html)
+
 def no_page(req):
 	html = "<html><body>No page<body><html>"
 	return HttpResponse(html)
@@ -55,13 +60,22 @@ def display_by_class(request, input_class, template, name):
 		, name)
 
 def display_questions(request):
-	return display_by_class(request, Question, 'questions.html', 'questions')
+	return display_by_class(request
+		, Question
+		, 'questions.html'
+		, 'questions')
 
 def display_tasks(request):
 	pass
 
 def display_hacks(request):
-	return display_by_class(request, Hack, 'hacks.html', 'hack')
+	return display_by_class(request
+		, Hack
+		, 'hacks.html'
+		, 'hack')
 
 def display_articles(request):
-	return display_by_class(request, Article, 'articles.html', 'articles')
+	return display_by_class(request
+		, Article
+		, 'articles.html'
+		, 'articles')

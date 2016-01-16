@@ -17,7 +17,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-		<a class="navbar-brand" href="">Online Judge</a>
+		<a class="navbar-brand" href="">Imperial Judge</a>
 	</div>
 
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -30,8 +30,11 @@
 				<a href="/home/">Home</a>
 			</li>
 			<li 
+				{% if "tasks" in path %}
+					class="active"
+				{% endif %}
 			>
-				<a href="/tasks/">Tasks</a> 
+				<a href="/tasks/">Tasks</a>
 			</li>
 			<li 
 				{% if "questions" in path %}
@@ -40,10 +43,39 @@
 			>
 				<a href="/questions/">Questions</a> 
 			</li>
-			
 			<li 
+				{% if "articles" in path %}
+					class="active"
+				{% endif %}
 			>
-				<a href="/questions/">Articles</a> 
+				<a href="/articles/">Articles</a> 
+			</li>
+			<li 
+				{% if "hacks" in path %}
+					class="active"
+				{% endif %}
+			>
+				<a href="/hacks/">Hacks</a> 
+			</li>
+							
+			<li 
+				{% if "freshers" in path %}
+					class="dropdown active"
+				{% else %}
+					class="dropdown"
+				{% endif %}
+			>
+			</li>
+			
+			<li class="dropdown">
+				<a href="#" data-toggle="dropdown" class="dropdown-toggle">Freshers <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Inbox</a></li>
+					<li><a href="#">Drafts</a></li>
+					<li><a href="#">Sent Items</a></li>
+					<li class="divider"></li>
+					<li><a href="#">Trash</a></li>
+				</ul>
 			</li>
 		</ul>
 		

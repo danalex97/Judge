@@ -7,6 +7,7 @@ from judge.views.basic_views import display_home
 from judge.views.basic_views import display_questions
 from judge.views.basic_views import display_articles
 from judge.views.basic_views import display_tasks
+from judge.views.basic_views import display_freshers
 from judge.views.basic_views import display_hacks
 from judge.views.basic_views import no_page
 
@@ -24,6 +25,7 @@ urlpatterns = patterns('',
     url(r'^tasks/$', display_tasks),
     url(r'^hacks/$', display_hacks),
     url(r'^articles/$', display_articles),
+    url(r'^freshers/$', display_freshers),
     
     url(r'.+', no_page),
 ) 
