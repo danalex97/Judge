@@ -86,37 +86,38 @@
 					<h3 class="panel-title">Statement</h3>
 				</div>
 			<div class="panel-body">
-				{{x.statement}}
+				{{x.statement|safe}}
 			</div>
 		</div>
 	</div>
-	
-	
-	<div class="col-sm-6">
-		<div>
-			<div class="panel panel-success">
-				<div class="panel-heading" align="left">
-					<h3 class="panel-title">Resources</h3>
+		
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="panel panel-success">
+					<div class="panel-heading" align="central">
+						<h3 class="panel-title">Resources</h3>
+					</div>
+					<div class="panel-body">
+						{{x.resources|safe}}
+					</div>
 				</div>
-			<div class="panel-body">
-				{{x.resources}}
 			</div>
-		</div>
-	</div>
-	
-	
-	<div class="col-sm-6">
-		<div>
-			<div class="panel panel-success">
-				<div class="panel-heading" align="right">
-					<h3 class="panel-title">Techs</h3>
+		
+			<div class="col-sm-6">
+				<div class="panel panel-success">
+					<div class="panel-heading" align="central">
+						<h3 class="panel-title">Techs</h3>
+					</div>
+					<div class="panel-body">
+						{{x.techs|safe}}
+					</div>
 				</div>
-			<div class="panel-body">
-				{{x.techs}}
 			</div>
 		</div>
 	</div>
-			
+	
+	<br>
 	<div class="col-sm-14">
 		<div>
 			<div class="panel panel-danger" align="center">
