@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title>Articles{% if query %},searched for {{ query|escape }} {% endif %}</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	</head>
+	
+	{% include 'header.html' %}
+
+	<body>
+		
+		{% if query %}
+		
+			<h2>Results for "{{ query|escape }}":</h2>
+		
+		{% else %}
+		
+			<h2>&nbsp;All the articles</h2>
+		
+		{% endif %}
+		
+		<hr>
+		
+		{% if results %}
+			
+			<div>
+				<div>
+					<div>
+						<div class="col-sm-4">
+							<h3 class="well" align="center">Title</h3>
+						</div>
+						<div class="col-sm-4" align="center">
+							<h3 class="well">Author</h3>
+						</div>
+						<div class="col-sm-4" align="center">
+							<h3 class="well">Article</h3>
+						</div>
+					</div>
+				</div>
+				
+				<div>
+					
+					{% for x in results %}
+						<div>
+							<div class="col-sm-4" align="center">
+								<div class="alert alert-dismissible alert-success">{{ x.title|escape }} </div>
+							</div>
+							<div class="col-sm-4" align="center">
+								<div class="alert alert-dismissible alert-danger">{{ x.user|escape }}</div>
+							</div>
+							<div class="col-sm-4" align="center">
+								<div class="alert alert-dismissible alert-success">
+									<a data-toggle="collapse" href="#rowId{{forloop.counter0}}">Content</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="collapse" id="rowId{{forloop.counter0}}">
+								<h2 align="center"> {{x.title|escape }} | {{ x.user|escape }} </h2>
+									
+
+<!------------------------------------------------------------------>
+<!------------------------------------------------------------------>
+<!------------------------------------------------------------------>
+<!------------------------------------------------------------------>
+
+	<div class="col-sm-12">
+		<div>		                
+			<div class="panel panel-primary" align="center">
+				<div class="panel-heading">
+					<h3 class="panel-title">Intro</h3>
+				</div>
+				<div class="panel-body">
+					{{x.intro|safe|escape}}
+				</div>
+			</div>
+		</div>
+	</div>
+			
+	<div class="col-sm-12">
+		<div>
+			<div class="panel panel-success">
+				<div class="panel-heading" align="center">
+					<h3 class="panel-title">Description</h3>
+				</div>
+			<div class="panel-body">
+				{{x.description|safe}}
+  			</div>
+		</div>
+	</div>
+		
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="panel panel-success">
+					<div class="panel-heading" align="central">
+						<h3 class="panel-title">Basics</h3>
+					</div>
+					<div class="panel-body">
+						{{x.basics|safe}}
+					</div>
+				</div>
+			</div>
+		
+			<div class="col-sm-6">
+				<div class="panel panel-success">
+					<div class="panel-heading" align="central">
+						<h3 class="panel-title">Code</h3>
+					</div>
+					<div class="panel-body">
+						{{x.code|safe}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-success">
+					<div class="panel-heading" align="central">
+						<h3 class="panel-title">Problems</h3>
+					</div>
+					<div class="panel-body">
+						{{x.problems|safe}}
+					</div>
+				</div>
+			</div>
+		
+			<div class="col-sm-12">
+				<div class="panel panel-success">
+					<div class="panel-heading" align="central">
+						<h3 class="panel-title">Content</h3>
+					</div>
+					<div class="panel-body">
+						{{x.code|safe}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<br>
+	<div class="col-sm-14">
+		<div>
+			<div class="panel panel-danger" align="center">
+				<div class="panel-heading">
+					<h3 class="panel-title">Tags</h3>
+				</div>
+			<div class="panel-body">
+				<span class="label label-success">
+					{% for y in x.labels %}
+						{% if y in ' ' %}
+						 
+					</span>
+					  
+						&nbsp;&nbsp;&nbsp;&nbsp;
+					 
+					<span class="label label-success">
+						 
+						{% else %}
+					   
+					{{ y }}
+					   
+						 {% endif %}  
+					{% endfor %}
+				</span>
+			</div>
+		</div>  
+	</div>
+		            
+<!------------------------------------------------------------------>
+<!------------------------------------------------------------------>
+<!------------------------------------------------------------------>
+<!------------------------------------------------------------------>
+		                
+		                </div>
+								</div>
+								
+								</div>
+						</div>
+					{% endfor %}
+				</div>
+				
+			</div>
+		
+		
+		{% else %}
+			<p>No articles found.</p>
+		{% endif %}
+		
+	{% include 'footer.html' %}
+	</body>
+</html>
