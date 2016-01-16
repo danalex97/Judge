@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title>Hacks{% if query %},searched for {{ query|escape }} {% endif %}</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	</head>
+	
+	{% include 'header.html' %}
+
+	<body>
+		
+		{% if query %}
+		
+			<h2>Results for "{{ query|escape }}":</h2>
+		
+		{% else %}
+		
+			<h2>&nbsp;All the hacks</h2>
+		
+		{% endif %}
+		
+		<hr>
+		
+		{% if results %}
+			
+			<div>
+				<div>
+					<div>
+						<div class="col-sm-4">
+							<h3 class="well" align="center">Title</h3>
+						</div>
+						<div class="col-sm-4" align="center">
+							<h3 class="well">Author</h3>
+						</div>
+						<div class="col-sm-4" align="center">
+							<h3 class="well">Hack</h3>
+						</div>
+					</div>
+				</div>
+				
+				<div>
+					
+					{% for x in results %}
+						<div>
+							<div class="col-sm-4" align="center">
+								<div class="alert alert-dismissible alert-success">{{ x.title|escape }} </div>
+							</div>
+							<div class="col-sm-4" align="center">
+								<div class="alert alert-dismissible alert-danger">{{ x.user|escape }}</div>
+							</div>
+							<div class="col-sm-4" align="center">
+								<div class="alert alert-dismissible alert-success">
+									<a data-toggle="collapse" href="#rowId{{forloop.counter0}}">Content</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="collapse" id="rowId{{forloop.counter0}}">
+								<h2 align="center"> {{x.title|escape }} | {{ x.user|escape }} </h2>
+								<div> {{ x.content|safe|escape }}	
+
+<!------------------------------------------------------------------>
+<!------------------------------------------------------------------>
+<!------------------------------------------------------------------>
+<!------------------------------------------------------------------>
+
+	<div class="col-sm-12">
+		<div>		                
+			<div class="panel panel-primary" align="center">
+				<div class="panel-heading">
+					<h3 class="panel-title">Hack</h3>
+				</div>
+				<div class="panel-body">
+					{{x.statement|safe|escape}}
+				</div>
+			</div>
+		</div>
+	</div>
+			
+	<div class="col-sm-12">
+		<div>
+			<div class="panel panel-success">
+				<div class="panel-heading" align="center">
+					<h3 class="panel-title">Statement</h3>
+				</div>
+			<div class="panel-body">
+				{{x.statement}}
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="col-sm-6">
+		<div>
+			<div class="panel panel-success">
+				<div class="panel-heading" align="left">
+					<h3 class="panel-title">Resources</h3>
+				</div>
+			<div class="panel-body">
+				{{x.resources}}
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="col-sm-6">
+		<div>
+			<div class="panel panel-success">
+				<div class="panel-heading" align="right">
+					<h3 class="panel-title">Techs</h3>
+				</div>
+			<div class="panel-body">
+				{{x.techs}}
+			</div>
+		</div>
+	</div>
+			
+	<div class="col-sm-14">
+		<div>
+			<div class="panel panel-danger" align="center">
+				<div class="panel-heading">
+					<h3 class="panel-title">Tags</h3>
+				</div>
+			<div class="panel-body">
+				<span class="label label-success">
+					{% for y in x.labels %}
+						{% if y in ' ' %}
+						 
+					</span>
+					  
+						&nbsp;&nbsp;&nbsp;&nbsp;
+					 
+					<span class="label label-success">
+						 
+						{% else %}
+					   
+					{{ y }}
+					   
+						 {% endif %}  
+					{% endfor %}
+				</span>
+			</div>
+		</div>  
+	</div>
+		            
+<!------------------------------------------------------------------>
+<!------------------------------------------------------------------>
+<!------------------------------------------------------------------>
+<!------------------------------------------------------------------>
+		                
+		                </div>
+								</div>
+								
+								</div>
+						</div>
+					{% endfor %}
+				</div>
+				
+			</div>
+		
+		
+		{% else %}
+			<p>No hacks found.</p>
+		{% endif %}
+		
+	{% include 'footer.html' %}
+	</body>
+</html>
