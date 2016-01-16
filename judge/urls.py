@@ -11,6 +11,12 @@ from judge.views.basic_views import display_freshers
 from judge.views.basic_views import display_hacks
 from judge.views.basic_views import no_page
 
+from judge.views.cookie_views import login
+from judge.views.cookie_views import auth_view
+from judge.views.cookie_views import logout
+from judge.views.cookie_views import loggedin
+from judge.views.cookie_views import invalid_login
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -26,6 +32,12 @@ urlpatterns = patterns('',
     url(r'^hacks/$', display_hacks),
     url(r'^articles/$', display_articles),
     url(r'^freshers/$', display_freshers),
+    
+    url(r'^accounts/login/$', login),
+    url(r'^accounts/auth/$', auth_view),
+    url(r'^accounts/logout/$', logout),
+    url(r'^accounts/loggedin/$', loggedin),
+    url(r'^accounts/invalid/$', invalid_login),
     
     url(r'.+', no_page),
 ) 
