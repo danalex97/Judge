@@ -87,6 +87,12 @@
 		</form>
       
 		<ul class="nav navbar-nav navbar-right">
+			<li	{% if "accounts" in path %}
+					class="active"
+				{% endif %}
+			><a href="/accounts/login/">
+				Login
+			</a></li>
 			<li><a>{% include 'datetime.html' %}</a></li>
 		</ul>
 	</div>

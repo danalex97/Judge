@@ -7,7 +7,9 @@ from judge.database.models import Question
 from judge.database.models import Hack
 from judge.database.models import Article
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import auth
+from django.core.context_processors import csrf
 
 def display_home(request):
 	t = get_template('basic.html')

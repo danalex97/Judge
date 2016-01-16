@@ -10,15 +10,17 @@
 
 {% include 'header.html' %}
 
-	<p>
-		Welcome {{ full_name }} !
-	</p>
-	
-	<p>
-		Click 
-			<a href='/accounts/logout/'> here </a> 
-		to logout.
-	</p>
+	<div class="jumbotron" align="center">
+		<p>
+			Welcome <b>{{ full_name }}</b> !
+		</p>
+		
+		<p>
+			Click 
+				<a href='/accounts/logout/'> here </a> 
+			to logout.
+		</p>
+	</div>
 
 {% include 'footer.html' %}
 

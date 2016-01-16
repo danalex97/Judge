@@ -10,13 +10,28 @@
 
 {% include 'header.html' %}
 
-	<form action='/accounts/auth/' method='post'> {% csrf_token %}
-		<label for="username">User:</label>
-		<input type="text" name="username" value="" id="username">
-		<label for="password">Password:</label>
-		<input type="password" name="password" value="" id="password">
-		<input type="submit" value="login" />
-	<form action='.' method='post'>
+	<div class="jumbotron">
+		<form class="form-horizontal" action='/accounts/auth/' method='post'> {% csrf_token %}
+			<fieldset>
+				<div class="form-group">
+					<label for="username" class="col-lg-2 control-label">User:</label>
+					<div class="col-lg-3">
+						<input class="form-control" type="text" name="username" value="" id="username">
+					</div><br><br>
+					
+					<label for="password" class="col-lg-2 control-label">Password:</label>
+					<div class="col-lg-3">
+						<input class="form-control"  type="password" name="password" value="" id="password">
+					</div><br><br>
+					<div class="col-lg-2">
+					</div>
+					<div class="col-lg-2 control-label">
+						<input class="form-control"  type="submit" value="Login" />
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
 
 {% include 'footer.html' %}
 
